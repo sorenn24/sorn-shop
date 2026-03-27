@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Carrito de compras SORN.SHOP — Revisa tu pedido y cotiza por WhatsApp.">
+  <title>Carrito — SORN.SHOP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages/catalogo.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body id="cart-page">
+
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <div class="toast-container" aria-live="polite"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+      <div class="container">
+        <div class="navbar__inner">
+          <a href="index.html" class="navbar__logo" aria-label="SORN.SHOP inicio">
+            <span class="navbar__logo-text">SORN</span>
+            <span class="navbar__logo-dot">.shop</span>
+          </a>
+          <ul class="navbar__nav" role="list">
+            <li><a href="index.html" class="navbar__link">Inicio</a></li>
+            <li><a href="catalogo.html" class="navbar__link">Catálogo</a></li>
+            <li><a href="contacto.html" class="navbar__link">Contacto</a></li>
+          </ul>
+          <div class="navbar__actions">
+            <a href="carrito.html" class="navbar__cart-btn" aria-label="Carrito">
+              <i data-lucide="shopping-bag" style="width:20px;height:20px"></i> <span class="navbar__cart-count">0</span>
+            </a>
+            <a href="https://wa.me/5218112345678" target="_blank" rel="noopener"
+              class="navbar__cta btn btn--sm"><i data-lucide="message-circle" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> Cotizar</a>
+            <button class="navbar__burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="mobile-menu" aria-label="Menú móvil" aria-hidden="true">
+    <a href="index.html" class="mobile-menu__link">Inicio</a>
+    <a href="catalogo.html" class="mobile-menu__link">Catálogo</a>
+    <a href="carrito.html" class="mobile-menu__link">Carrito</a>
+    <a href="contacto.html" class="mobile-menu__link">Contacto</a>
+  </nav>
+
+  <main>
+
+    <!-- Header -->
+    <div class="carrito-header">
+      <div class="container">
+        <p class="section-eyebrow">Tu pedido</p>
+        <h1 class="section-title" style="font-size:clamp(2rem,5vw,4rem)">
+          Carrito
+          <span id="cart-item-count"
+            style="font-size:var(--fs-xl); color:var(--clr-text-muted); font-weight:var(--fw-regular)"></span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom:var(--sp-5xl)">
+
+      <!-- Empty state -->
+      <div class="carrito-empty" id="cart-empty" style="display:none">
+        <div class="carrito-empty__icon"><i data-lucide="shopping-bag" style="width:64px;height:64px;opacity:0.6;margin:0 auto"></i></div>
+        <h2 class="carrito-empty__title">Tu carrito está vacío</h2>
+        <p class="carrito-empty__text">Aún no has agregado ningún producto. ¡Explora nuestro catálogo!</p>
+        <a href="catalogo.html" class="btn btn--primary btn--lg" style="margin-top:var(--sp-xl)">
+          Ir al catálogo →
+        </a>
+      </div>
+
+      <!-- Cart content -->
+      <div class="carrito-layout" id="cart-content" style="display:none">
+
+        <!-- Items -->
+        <div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--sp-lg)">
+            <h2 style="font-size:var(--fs-lg); font-weight:var(--fw-semi)">Productos</h2>
+            <button onclick="if(confirm('¿Vaciar carrito?')){SORN_CART.clear(); location.reload();}"
+              class="btn btn--sm btn--danger" style="font-size:var(--fs-xs)">
+              Vaciar carrito
+            </button>
+          </div>
+          <div class="carrito-items" id="cart-items-container" aria-live="polite">
+            <!-- Populated by carrito.js -->
+          </div>
+          <div style="margin-top:var(--sp-xl)">
+            <a href="catalogo.html" class="btn btn--ghost btn--sm">
+              ← Seguir explorando
+            </a>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <aside>
+          <div class="order-summary" role="complementary" aria-label="Resumen del pedido">
+            <h2 class="order-summary__title">Resumen del pedido</h2>
+
+            <div class="order-summary__row">
+              <span>Prendas</span>
+              <span id="summary-count">—</span>
+            </div>
+            <div class="order-summary__row">
+              <span>Subtotal estimado</span>
+              <span id="summary-subtotal">$0</span>
+            </div>
+            <div class="order-summary__row">
+              <span>Envío</span>
+              <span style="color:var(--clr-gold)">A cotizar</span>
+            </div>
+            <div class="order-summary__row">
+              <span>Personalización</span>
+              <span style="color:var(--clr-gold)">Incluida</span>
+            </div>
+
+            <div class="order-summary__row order-summary__row--total">
+              <span>Total estimado</span>
+              <span class="order-summary__total-amount" id="summary-total">$0</span>
+            </div>
+
+            <!-- Note -->
+            <p
+              style="font-size:var(--fs-xs); color:var(--clr-text-muted); margin:var(--sp-md) 0; line-height:var(--lh-relaxed)">
+              * El precio final puede variar según cantidad, técnica y personalización. Confirma con nuestro equipo.
+            </p>
+
+            <!-- WhatsApp CTA -->
+            <button id="wa-quote-btn" class="btn btn--wa btn--full" aria-label="Cotizar pedido por WhatsApp" style="gap:8px">
+              <i data-lucide="message-circle" style="width:20px;height:20px"></i> Cotizar por WhatsApp
+            </button>
+
+            <!-- Trust badges -->
+            <div
+              style="display:flex; flex-direction:column; gap:var(--sp-sm); margin-top:var(--sp-lg); padding-top:var(--sp-lg); border-top:1px solid var(--clr-border)">
+              <div
+                style="display:flex; align-items:center; gap:var(--sp-sm); font-size:var(--fs-xs); color:var(--clr-text-sub)">
+                ✓ <span>Respuesta en menos de 2 horas</span>
+              </div>
+              <div
+                style="display:flex; align-items:center; gap:var(--sp-sm); font-size:var(--fs-xs); color:var(--clr-text-sub)">
+                ✓ <span>Sin pagos por adelantado</span>
+              </div>
+              <div
+                style="display:flex; align-items:center; gap:var(--sp-sm); font-size:var(--fs-xs); color:var(--clr-text-sub)">
+                ✓ <span>Mockup gratis antes de producir</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+
+    <!-- Upsell - featured products -->
+    <div style="background:var(--clr-surface); border-top:1px solid var(--clr-border); padding:var(--sp-4xl) 0">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Puede que también te guste</p>
+          <h2 class="section-title" style="font-size:var(--fs-3xl)">Más productos</h2>
+        </div>
+        <div class="products-grid" id="upsell-grid">
+          <div class="skeleton" style="height:400px; border-radius:var(--radius-xl)"></div>
+          <div class="skeleton" style="height:400px; border-radius:var(--radius-xl)"></div>
+          <div class="skeleton" style="height:400px; border-radius:var(--radius-xl)"></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">SORN</div>
+          <p class="footer__brand-desc">Playeras personalizadas premium en Monterrey, NL.</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            <a href="#" class="footer__social-link" aria-label="TikTok"><i data-lucide="music" style="width:20px;height:20px"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Navegación</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html" class="footer__link">Inicio</a></li>
+            <li><a href="catalogo.html" class="footer__link">Catálogo</a></li>
+            <li><a href="carrito.html" class="footer__link">Carrito</a></li>
+            <li><a href="contacto.html" class="footer__link">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Técnicas</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="catalogo.html?filter=DTF" class="footer__link">DTF Full Color</a></li>
+            <li><a href="catalogo.html?filter=Polo" class="footer__link">DTF Textil (Polos)</a></li>
+            <li><a href="catalogo.html?filter=Oversize" class="footer__link">Oversize Premium</a></li>
+            <li><a href="catalogo.html?filter=Crop Top" class="footer__link">Crop Top Dama</a></li>
+            <li><a href="catalogo.html?filter=Regular" class="footer__link">Corte Regular</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Contacto</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="https://wa.me/5218112345678" target="_blank" rel="noopener" class="footer__link"><i data-lucide="smartphone" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i>
+                WhatsApp</a></li>
+            <li><a href="mailto:hola@sorn.shop" class="footer__link"><i data-lucide="mail" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> hola@sorn.shop</a></li>
+            <li><span class="footer__link"><i data-lucide="map-pin" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> Monterrey, NL</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 <span>SORN.SHOP</span>. Todos los derechos reservados.</p>
+        <a href="https://wa.me/5218112345678" target="_blank" rel="noopener" class="footer__wa-btn" style="display:flex;align-items:center;gap:6px"><i data-lucide="message-circle" style="width:18px;height:18px"></i> WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay" aria-hidden="true"></div>
+  <div id="product-modal" class="modal" role="dialog" aria-label="Detalle del producto" aria-modal="true" tabindex="-1">
+    <button class="modal__close" aria-label="Cerrar">✕</button>
+    <div id="modal-body"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js" type="module"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/carrito.js" type="module"></script>
+  <script src="js/modal-producto.js"></script>
+  <script src="js/whatsapp.js" type="module"></script>
+
+  <script type="module">
+    import { createProductCard } from './js/catalogo.js';
+
+    async function loadUpsell() {
+      const grid = document.getElementById('upsell-grid');
+      if (!grid) return;
+      try {
+        const res = await fetch('data/productos.json');
+        const data = await res.json();
+        window._sornProducts = data.productos;
+        const picks = data.productos.slice(0, 3);
+        grid.innerHTML = picks.map((p, i) => createProductCard(p, i)).join('');
+        requestAnimationFrame(() => {
+          grid.querySelectorAll('.product-card').forEach((c, i) => {
+            setTimeout(() => c.classList.add('visible'), i * 80);
+          });
+        });
+      } catch { }
+    }
+
+    loadUpsell();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+      const observer = new MutationObserver(() => {
+        observer.disconnect();
+        lucide.createIcons();
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+  </script>
+
+</body>
+
+</html>

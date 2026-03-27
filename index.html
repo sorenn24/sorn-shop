@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="SORN.SHOP — Playeras personalizadas premium con impresión DTF y DTF Textil. Cotiza en WhatsApp.">
+  <title>SORN.SHOP — Playeras Personalizadas Premium</title>
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- Grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Loading screen -->
+  <div id="loading-screen" role="status" aria-label="Cargando SORN.SHOP">
+    <div class="loading-logo">SORN</div>
+    <div class="loading-bar">
+      <div class="loading-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" aria-live="polite"></div>
+
+  <!-- ══════════════════════════════════════
+     NAVIGATION
+     ══════════════════════════════════════ -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+      <div class="container">
+        <div class="navbar__inner">
+
+          <!-- Logo -->
+          <a href="index.html" class="navbar__logo" aria-label="SORN.SHOP inicio">
+            <span class="navbar__logo-text">SORN</span>
+            <span class="navbar__logo-dot">.shop</span>
+          </a>
+
+          <!-- Desktop links -->
+          <ul class="navbar__nav" role="list">
+            <li><a href="index.html" class="navbar__link active">Inicio</a></li>
+            <li><a href="catalogo.html" class="navbar__link">Catálogo</a></li>
+            <li><a href="contacto.html" class="navbar__link">Contacto</a></li>
+          </ul>
+
+          <!-- Actions -->
+          <div class="navbar__actions">
+            <a href="carrito.html" class="navbar__cart-btn" aria-label="Carrito de compras">
+              <i data-lucide="shopping-bag" style="width:20px;height:20px"></i>
+              <span class="navbar__cart-count" aria-live="polite">0</span>
+            </a>
+            <a href="https://wa.me/5218112345678" target="_blank" rel="noopener" class="navbar__cta btn btn--sm">
+              Cotizar ahora
+            </a>
+            <button class="navbar__burger" aria-label="Abrir menú" aria-expanded="false">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile menu -->
+  <nav class="mobile-menu" aria-label="Menú móvil" aria-hidden="true">
+    <a href="index.html" class="mobile-menu__link">Inicio</a>
+    <a href="catalogo.html" class="mobile-menu__link">Catálogo</a>
+    <a href="carrito.html" class="mobile-menu__link">Carrito</a>
+    <a href="contacto.html" class="mobile-menu__link">Contacto</a>
+  </nav>
+
+  <main>
+
+    <!-- ══════════════════════════════════════
+       HERO
+       ══════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- Background -->
+      <div class="hero__bg">
+        <img class="hero__bg-img" src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=1800&q=80"
+          alt="Modelo usando playera personalizada SORN" fetchpriority="high" id="hero-bg">
+        <div class="hero__overlay"></div>
+        <div class="hero__glow" aria-hidden="true"></div>
+      </div>
+
+      <div class="container">
+        <div class="hero__content">
+
+          <!-- Eyebrow -->
+          <p class="hero__eyebrow">
+            <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+            Playeras personalizadas premium — 2026
+          </p>
+
+          <!-- Title -->
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__title-line">
+              <span class="hero__title-word"></span>
+            </span>
+            <span class="hero__title-line">
+              <span class="hero__title-word">SORN</span>
+            </span>
+            <span class="hero__title-line">
+              <span class="hero__title-word hero__title-accent">SHOP</span>
+            </span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="hero__subtitle">
+            Diseña playeras que cuenten tu historia con la mejor calidad en DTF y DTF Textil — directo en WhatsApp.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="hero__actions">
+            <a href="catalogo.html" class="btn btn--primary btn--lg">
+              Ver catálogo &nbsp;→
+            </a>
+            <a href="https://wa.me/5218112345678?text=Hola%20SORN.SHOP%2C%20quiero%20cotizar%20un%20dise%C3%B1o"
+              target="_blank" rel="noopener" class="btn btn--outline btn--lg" style="gap:8px">
+              <i data-lucide="message-circle" style="width:20px;height:20px"></i> Cotiza tu diseño
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <div class="hero__stat-number" data-count="500">500+</div>
+              <div class="hero__stat-label">Clientes felices</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number" data-count="2">2</div>
+              <div class="hero__stat-label">Técnicas disponibles</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number" data-count="7">7</div>
+              <div class="hero__stat-label">Días de entrega</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-text">Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       MARQUEE
+       ══════════════════════════════════════ -->
+    <div class="marquee-section" aria-hidden="true">
+      <div class="marquee-track">
+        <!-- duplicated for infinite loop -->
+        <div class="marquee-item"><strong>DTF FULL COLOR</strong> <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item">POLO ALGODÓN <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item"><strong>CROP TOP DAMA</strong> <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item">CORTE REGULAR <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item"><strong>OVERSIZE PREMIUM</strong> <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item">DTF TEXTIL PARA POLO <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item"><strong>ENTREGA 7 DÍAS</strong> <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item">ENVÍOS A TODO MÉXICO <span class="marquee-sep">✦</span></div>
+        <!-- duplicate -->
+        <div class="marquee-item"><strong>DTF FULL COLOR</strong> <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item">POLO ALGODÓN <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item"><strong>CROP TOP DAMA</strong> <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item">CORTE REGULAR <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item"><strong>OVERSIZE PREMIUM</strong> <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item">DTF TEXTIL PARA POLO <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item"><strong>ENTREGA 7 DÍAS</strong> <span class="marquee-sep">✦</span></div>
+        <div class="marquee-item">ENVÍOS A TODO MÉXICO <span class="marquee-sep">✦</span></div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+       FEATURED PRODUCTS
+       ══════════════════════════════════════ -->
+    <section class="section" aria-labelledby="featured-title">
+      <div class="container">
+
+        <header class="section-header flex-between">
+          <div>
+            <p class="section-eyebrow">Colección</p>
+            <h2 class="section-title reveal" id="featured-title">
+              Diseños<br>Destacados
+            </h2>
+          </div>
+          <a href="catalogo.html" class="btn btn--outline reveal-right">
+            Ver todo el catálogo →
+          </a>
+        </header>
+
+        <!-- Products grid (populated by JS) -->
+        <div class="products-grid" id="featured-grid">
+          <!-- Skeleton placeholders while loading -->
+          <div class="product-card skeleton" style="height:420px; border-radius:var(--radius-xl)"></div>
+          <div class="product-card skeleton" style="height:420px; border-radius:var(--radius-xl)"></div>
+          <div class="product-card skeleton" style="height:420px; border-radius:var(--radius-xl)"></div>
+          <div class="product-card skeleton" style="height:420px; border-radius:var(--radius-xl)"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       BENEFITS
+       ══════════════════════════════════════ -->
+    <section class="section--sm" aria-labelledby="benefits-title">
+      <div class="container">
+
+        <header class="section-header text-center">
+          <p class="section-eyebrow" style="justify-content:center">Por qué SORN</p>
+          <h2 class="section-title reveal" id="benefits-title">La diferencia está<br>en los detalles</h2>
+        </header>
+
+        <div class="benefits-grid stagger-children">
+          <div class="benefit-card">
+            <div class="benefit-card__icon"><i data-lucide="target" style="width:32px;height:32px"></i></div>
+            <h3 class="benefit-card__title">Calidad Premium</h3>
+            <p class="benefit-card__desc">Telas de algodón peinado de alta densidad. Costuras reforzadas. Cada prenda
+              pasa control de calidad antes de entregarse.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-card__icon"><i data-lucide="palette" style="width:32px;height:32px"></i></div>
+            <h3 class="benefit-card__title">Personalización Total</h3>
+            <p class="benefit-card__desc">Tu diseño, tus colores, tus tallas. Impresión en DTF y DTF Textil para polos.
+              Hacemos realidad tu visión exacta.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-card__icon"><i data-lucide="headphones" style="width:32px;height:32px"></i></div>
+            <h3 class="benefit-card__title">Atención Directa</h3>
+            <p class="benefit-card__desc">Sin intermediarios. Hablas directo con el equipo SORN por WhatsApp. Respuesta
+              en menos de 2 horas en horario laboral.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-card__icon"><i data-lucide="rocket" style="width:32px;height:32px"></i></div>
+            <h3 class="benefit-card__title">Entrega Rápida</h3>
+            <p class="benefit-card__desc">7-10 días hábiles desde aprobación de arte. Envíos a todo México con rastreo
+              en tiempo real. Pedidos urgentes disponibles.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       GALLERY / INSPIRACIÓN
+       ══════════════════════════════════════ -->
+    <section class="section" aria-labelledby="gallery-title">
+      <div class="container">
+
+        <header class="section-header">
+          <p class="section-eyebrow">Inspiración</p>
+          <h2 class="section-title reveal" id="gallery-title">Nuestro trabajo<br>habla por sí solo</h2>
+          <p class="section-subtitle reveal">Cada prenda es única. Mira algunos de nuestros proyectos más recientes.</p>
+        </header>
+
+        <div class="gallery-masonry">
+          <div class="gallery-item gallery-item--tall reveal-left">
+            <img src="https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=600&q=80"
+              alt="Lookbook SORN — playera negra oversize" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__caption">Urban Collection 2026</span>
+            </div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=600&q=80"
+              alt="DTF full color print" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__caption">DTF Full Color</span>
+            </div>
+          </div>
+          <div class="gallery-item reveal" style="transition-delay:0.1s">
+            <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&q=80"
+              alt="Colección DTF casual" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__caption">Vintage Series</span>
+            </div>
+          </div>
+          <div class="gallery-item gallery-item--wide reveal" style="transition-delay:0.2s">
+            <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&q=80"
+              alt="Playeras personalizadas corporativas" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__caption">Corporate Elite — Uniformes Premium</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       TESTIMONIALS
+       ══════════════════════════════════════ -->
+    <section class="section--sm" aria-labelledby="testimonials-title">
+      <div class="container">
+
+        <header class="section-header text-center">
+          <p class="section-eyebrow" style="justify-content:center">Testimonios</p>
+          <h2 class="section-title reveal" id="testimonials-title">Lo que dicen<br>nuestros clientes</h2>
+        </header>
+
+        <div class="testimonials-grid stagger-children">
+          <article class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"Las playeras para mi empresa quedaron increíbles. El bordado es de una
+              calidad que no había visto antes. Definitivamente vuelvo a pedir."</p>
+            <div class="testimonial-card__author">
+              <img class="testimonial-card__avatar"
+                src="https://api.dicebear.com/7.x/personas/svg?seed=carlos&backgroundColor=1A1A1A" alt="Carlos M.">
+              <div>
+                <p class="testimonial-card__name">Carlos M.</p>
+                <p class="testimonial-card__handle">CEO · StartupMTY</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"Pedí 50 playeras para mi equipo de fútbol con DTF y el resultado fue
+              espectacular. Colores vibrantes, entrega puntual. ¡100% recomendado!"</p>
+            <div class="testimonial-card__author">
+              <img class="testimonial-card__avatar"
+                src="https://api.dicebear.com/7.x/personas/svg?seed=diana&backgroundColor=1A1A1A" alt="Diana R.">
+              <div>
+                <p class="testimonial-card__name">Diana R.</p>
+                <p class="testimonial-card__handle">Coordinadora · Liga Femsa</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"El proceso fue súper fácil. Me mandaron el mockup en menos de 1 hora y en
+              8 días tenía mis playeras. La calidad supera cualquier expectativa."</p>
+            <div class="testimonial-card__author">
+              <img class="testimonial-card__avatar"
+                src="https://api.dicebear.com/7.x/personas/svg?seed=miguel&backgroundColor=1A1A1A" alt="Miguel A.">
+              <div>
+                <p class="testimonial-card__name">Miguel A.</p>
+                <p class="testimonial-card__handle">Creator · @miguelbrand</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       CTA BANNER
+       ══════════════════════════════════════ -->
+    <section class="section--sm">
+      <div class="container">
+        <div class="cta-banner reveal-scale">
+          <h2 class="cta-banner__title">¿LISTO PARA<br>CREAR?</h2>
+          <p class="cta-banner__sub">
+            Cotiza tu pedido en menos de 5 minutos. Sin formularios, sin esperas — directo a WhatsApp.
+          </p>
+          <div class="flex-center" style="gap:var(--sp-md); flex-wrap:wrap;">
+            <a href="https://wa.me/5218112345678?text=Hola%20SORN.SHOP%2C%20quiero%20cotizar%20mis%20playeras"
+              target="_blank" rel="noopener" class="btn btn--wa btn--lg" style="gap:8px">
+              <i data-lucide="message-circle" style="width:20px;height:20px"></i> Cotizar por WhatsApp
+            </a>
+            <a href="catalogo.html" class="btn btn--outline btn--lg">
+              Ver catálogo
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Brand -->
+        <div>
+          <div class="footer__brand-logo">SORN</div>
+          <p class="footer__brand-desc">
+            Playeras personalizadas premium. Desde serigrafía artesanal hasta bordado 3D de alta costura.
+          </p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram" title="Instagram"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-instagram">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg></a>
+            <a href="#" class="footer__social-link" aria-label="TikTok" title="TikTok"><i data-lucide="music"
+                style="width:20px;height:20px"></i></a>
+            <a href="#" class="footer__social-link" aria-label="Facebook" title="Facebook"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-facebook">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg></a>
+          </div>
+        </div>
+
+        <!-- Navegación -->
+        <div>
+          <h3 class="footer__col-title">Navegación</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html" class="footer__link">Inicio</a></li>
+            <li><a href="catalogo.html" class="footer__link">Catálogo</a></li>
+            <li><a href="carrito.html" class="footer__link">Carrito</a></li>
+            <li><a href="contacto.html" class="footer__link">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Técnicas -->
+        <div>
+          <h3 class="footer__col-title">Técnicas</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="catalogo.html?filter=DTF" class="footer__link">DTF Full Color</a></li>
+            <li><a href="catalogo.html?filter=Polo" class="footer__link">DTF Textil (Polos)</a></li>
+            <li><a href="catalogo.html?filter=Oversize" class="footer__link">Oversize Premium</a></li>
+            <li><a href="catalogo.html?filter=Crop Top" class="footer__link">Crop Top Dama</a></li>
+            <li><a href="catalogo.html?filter=Regular" class="footer__link">Corte Regular</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <h3 class="footer__col-title">Contacto</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="https://wa.me/5218112345678" target="_blank" rel="noopener" class="footer__link"><i
+                  data-lucide="smartphone" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i>
+                WhatsApp</a></li>
+            <li><a href="mailto:hola@sorn.shop" class="footer__link"><i data-lucide="mail"
+                  style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> hola@sorn.shop</a></li>
+            <li><span class="footer__link" style="cursor:default"><i data-lucide="map-pin"
+                  style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> Monterrey, NL</span></li>
+            <li><span class="footer__link" style="cursor:default"><i data-lucide="clock"
+                  style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> Lun–Vie 9am–7pm</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer__bottom">
+        <p class="footer__copy">
+          © 2026 <span>SORN.SHOP</span>. Todos los derechos reservados.
+        </p>
+        <a href="https://wa.me/5218112345678" target="_blank" rel="noopener" class="footer__wa-btn"
+          aria-label="Contactar por WhatsApp" style="display:flex;align-items:center;gap:6px">
+          <i data-lucide="message-circle" style="width:18px;height:18px"></i> WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="modal-overlay" class="modal-overlay" role="presentation" aria-hidden="true"></div>
+  <div id="product-modal" class="modal" role="dialog" aria-label="Detalle del producto" aria-modal="true" tabindex="-1">
+    <button class="modal__close" aria-label="Cerrar modal">✕</button>
+    <div id="modal-body"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js" type="module"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/carrito.js" type="module"></script>
+  <script src="js/modal-producto.js"></script>
+  <script src="js/whatsapp.js" type="module"></script>
+
+  <!-- Featured products loader -->
+  <script type="module">
+    import { createProductCard } from './js/catalogo.js';
+
+    async function loadFeatured() {
+      const grid = document.getElementById('featured-grid');
+      if (!grid) return;
+
+      try {
+        const res = await fetch('data/productos.json');
+        const data = await res.json();
+        window._sornProducts = data.productos;
+
+        const featured = data.productos
+          .filter(p => p.destacado)
+          .slice(0, 4);
+
+        grid.innerHTML = featured.map((p, i) => createProductCard(p, i)).join('');
+
+        // Trigger reveal
+        requestAnimationFrame(() => {
+          grid.querySelectorAll('.product-card').forEach((card, i) => {
+            setTimeout(() => card.classList.add('visible'), i * 80);
+          });
+        });
+
+      } catch (err) {
+        console.error('Error loading featured products:', err);
+        grid.innerHTML = '<p style="color:var(--clr-text-muted); grid-column:1/-1; text-align:center; padding:var(--sp-3xl)">No se pudieron cargar los productos.</p>';
+      }
+    }
+
+    loadFeatured();
+  </script>
+
+  <script>
+    // Hero image parallax
+    const heroBg = document.getElementById('hero-bg');
+    if (heroBg) {
+      heroBg.addEventListener('load', () => heroBg.classList.add('loaded'));
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY * 0.3;
+        heroBg.style.transform = `scale(1) translateY(${y}px)`;
+      }, { passive: true });
+    }
+
+    // Counter animation on scroll
+    const counters = document.querySelectorAll('[data-count]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const to = parseInt(el.dataset.count);
+          const suffix = el.textContent.includes('+') ? '+' : '';
+          let start = performance.now();
+          const dur = 1500;
+          const tick = (now) => {
+            const t = Math.min((now - start) / dur, 1);
+            const v = Math.round(to * (1 - Math.pow(1 - t, 3)));
+            el.textContent = v + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(el => counterObserver.observe(el));
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+      // Observe DOM changes to re-render dynamically added icons
+      const observer = new MutationObserver(() => {
+        observer.disconnect();
+        lucide.createIcons();
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+  </script>
+
+</body>
+
+</html>

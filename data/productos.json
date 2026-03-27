@@ -1,0 +1,173 @@
+{
+  "productos": [
+    {
+      "id": "sorn-001",
+      "slug": "playera-regular-hombre",
+      "nombre": "Playera Corte Regular Hombre",
+      "categoria": "DTF",
+      "precio": 300,
+      "precioBase": 300,
+      "descripcion": "Playera básica corte regular para hombre, 100% algodón. Impresión en técnica DTF full color de alta duración. Ideal para uso diario o eventos.",
+      "descripcionCorta": "Corte clásico hombre con impresión DTF full color",
+      "tecnica": "DTF",
+      "material": "100% Algodón Premium",
+      "imagenPrincipal": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
+      "imagenes": [
+        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
+        "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800&q=80"
+      ],
+      "tallas": ["S", "M", "L", "XL", "XXL"],
+      "colores": [
+        { "nombre": "Negro", "hex": "#0A0A0A" },
+        { "nombre": "Blanco", "hex": "#FFFFFF" },
+        { "nombre": "Azul Marino", "hex": "#1A2744" }
+      ],
+      "etiquetas": ["DTF", "Regular", "Hombre"],
+      "destacado": true,
+      "nuevo": false,
+      "stock": true
+    },
+    {
+      "id": "sorn-002",
+      "slug": "playera-regular-dama",
+      "nombre": "Playera Corte Regular Dama",
+      "categoria": "DTF",
+      "precio": 300,
+      "precioBase": 300,
+      "descripcion": "Playera corte regular para dama con silueta ajustada. Impresión DTF full color resistente a lavadas y de tacto suave.",
+      "descripcionCorta": "Corte ajustado mujer con impresión DTF full color",
+      "tecnica": "DTF",
+      "material": "100% Algodón Premium",
+      "imagenPrincipal": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80",
+      "imagenes": [
+        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80",
+        "https://images.unsplash.com/photo-1622519407650-3cb98286aa52?w=800&q=80"
+      ],
+      "tallas": ["XS", "S", "M", "L", "XL"],
+      "colores": [
+        { "nombre": "Negro", "hex": "#0A0A0A" },
+        { "nombre": "Blanco", "hex": "#FFFFFF" },
+        { "nombre": "Rosa", "hex": "#FFC0CB" }
+      ],
+      "etiquetas": ["DTF", "Regular", "Dama"],
+      "destacado": true,
+      "nuevo": true,
+      "stock": true
+    },
+    {
+      "id": "sorn-003",
+      "slug": "oversize-premium",
+      "nombre": "Playera Oversize Premium",
+      "categoria": "Oversize",
+      "precio": 350,
+      "precioBase": 350,
+      "descripcion": "Corte oversize urbano de hombros caídos. Excelente lienzo para diseños amplios aplicando nuestra técnica de impresión DTF de alta resolución.",
+      "descripcionCorta": "Corte relajado urbano con gran área de impresión DTF",
+      "tecnica": "DTF",
+      "material": "100% Algodón Peinado 220g",
+      "imagenPrincipal": "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=800&q=80",
+      "imagenes": [
+        "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=800&q=80",
+        "https://images.unsplash.com/photo-1618354691438-25bc04584c23?w=800&q=80"
+      ],
+      "tallas": ["S", "M", "L", "XL"],
+      "colores": [
+        { "nombre": "Negro", "hex": "#0A0A0A" },
+        { "nombre": "Blanco Hueso", "hex": "#F5F0E8" },
+        { "nombre": "Gris Carbón", "hex": "#3A3A3A" }
+      ],
+      "etiquetas": ["DTF", "Oversize", "Streetwear"],
+      "destacado": true,
+      "nuevo": false,
+      "stock": true
+    },
+    {
+      "id": "sorn-004",
+      "slug": "crop-top-dama",
+      "nombre": "Crop Top Dama",
+      "categoria": "DTF",
+      "precio": 280,
+      "precioBase": 280,
+      "descripcion": "Luce un estilo fresco con nuestros crop tops para dama. Se personalizan mediante DTF sin perder la comodidad ni elasticidad de la prenda.",
+      "descripcionCorta": "Silueta crop top mujer personalizable con DTF",
+      "tecnica": "DTF",
+      "material": "95% Algodón / 5% Elastano",
+      "imagenPrincipal": "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=800&q=80",
+      "imagenes": [
+        "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=800&q=80",
+        "https://images.unsplash.com/photo-1503342394128-c104d54dba01?w=800&q=80"
+      ],
+      "tallas": ["XS", "S", "M", "L"],
+      "colores": [
+        { "nombre": "Negro", "hex": "#0A0A0A" },
+        { "nombre": "Blanco", "hex": "#FFFFFF" }
+      ],
+      "etiquetas": ["DTF", "Crop Top", "Dama"],
+      "destacado": false,
+      "nuevo": true,
+      "stock": true
+    },
+    {
+      "id": "sorn-005",
+      "slug": "polo-algodon",
+      "nombre": "Tipo Polo de Algodón",
+      "categoria": "Polo",
+      "precio": 380,
+      "precioBase": 380,
+      "descripcion": "Playera tipo Polo de tela piqué de algodón. Personalizada con la novedosa técnica DTF Textil, que se funde perfectamente con el tejido otorgando acabado elegante y profesional.",
+      "descripcionCorta": "Polo de algodón con técnica DTF Textil Premium",
+      "tecnica": "DTF Textil",
+      "material": "100% Algodón Piqué",
+      "imagenPrincipal": "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=800&q=80",
+      "imagenes": [
+        "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=800&q=80",
+        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&q=80"
+      ],
+      "tallas": ["S", "M", "L", "XL", "XXL"],
+      "colores": [
+        { "nombre": "Negro", "hex": "#0A0A0A" },
+        { "nombre": "Blanco", "hex": "#FFFFFF" },
+        { "nombre": "Verde Botella", "hex": "#123524" }
+      ],
+      "etiquetas": ["DTF Textil", "Polo", "Algodón"],
+      "destacado": true,
+      "nuevo": false,
+      "stock": true
+    },
+    {
+      "id": "sorn-006",
+      "slug": "polo-dryfit",
+      "nombre": "Tipo Polo Dryfit",
+      "categoria": "Polo",
+      "precio": 480,
+      "precioBase": 480,
+      "descripcion": "La mejor opción para ambientes casuales y de actividad. La tela Dryfit mantiene el polo ligero y fresco, mientras que el DTF Textil asegura un estampado brillante y duradero resistente a estiramientos.",
+      "descripcionCorta": "Polo Dryfit deportiva/casual con DTF Textil",
+      "tecnica": "DTF Textil",
+      "material": "100% Poliéster Dryfit Alto Rendimiento",
+      "imagenPrincipal": "https://images.unsplash.com/photo-1521105948332-9cb8ceb32fb6?w=800&q=80",
+      "imagenes": [
+        "https://images.unsplash.com/photo-1521105948332-9cb8ceb32fb6?w=800&q=80",
+        "https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=800&q=80"
+      ],
+      "tallas": ["XS", "S", "M", "L", "XL", "XXL"],
+      "colores": [
+        { "nombre": "Negro", "hex": "#0A0A0A" },
+        { "nombre": "Azul Marino", "hex": "#1A2744" },
+        { "nombre": "Gris Acero", "hex": "#5A6472" },
+        { "nombre": "Rojo", "hex": "#CC2222" }
+      ],
+      "etiquetas": ["DTF Textil", "Polo", "Dryfit"],
+      "destacado": false,
+      "nuevo": true,
+      "stock": true
+    }
+  ],
+  "categorias": ["Todos", "DTF", "Polo", "Oversize", "Crop Top", "Regular"],
+  "info": {
+    "whatsapp": "5218112345678",
+    "instagram": "@sorn.shop",
+    "minPedido": 6,
+    "tiempoEntrega": "7-10 días hábiles"
+  }
+}

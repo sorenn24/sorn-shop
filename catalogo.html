@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Catálogo de playeras personalizadas SORN.SHOP — DTF, DTF Textil para polos, Oversize premium.">
+  <title>Catálogo — SORN.SHOP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages/catalogo.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body id="catalogo-page">
+
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <div class="toast-container" aria-live="polite"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+      <div class="container">
+        <div class="navbar__inner">
+          <a href="index.html" class="navbar__logo" aria-label="SORN.SHOP inicio">
+            <span class="navbar__logo-text">SORN</span>
+            <span class="navbar__logo-dot">.shop</span>
+          </a>
+          <ul class="navbar__nav" role="list">
+            <li><a href="index.html" class="navbar__link">Inicio</a></li>
+            <li><a href="catalogo.html" class="navbar__link active">Catálogo</a></li>
+            <li><a href="contacto.html" class="navbar__link">Contacto</a></li>
+          </ul>
+          <div class="navbar__actions">
+            <a href="carrito.html" class="navbar__cart-btn" aria-label="Carrito">
+              <i data-lucide="shopping-bag" style="width:20px;height:20px"></i> <span class="navbar__cart-count">0</span>
+            </a>
+            <a href="https://wa.me/5218112345678" target="_blank" rel="noopener"
+              class="navbar__cta btn btn--sm"><i data-lucide="message-circle" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> Cotizar</a>
+            <button class="navbar__burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="mobile-menu" aria-label="Menú móvil" aria-hidden="true">
+    <a href="index.html" class="mobile-menu__link">Inicio</a>
+    <a href="catalogo.html" class="mobile-menu__link">Catálogo</a>
+    <a href="carrito.html" class="mobile-menu__link">Carrito</a>
+    <a href="contacto.html" class="mobile-menu__link">Contacto</a>
+  </nav>
+
+  <main>
+
+    <!-- Header -->
+    <div class="catalogo-header">
+      <div class="container">
+        <div class="catalogo-header__top">
+          <div>
+            <p class="section-eyebrow">Catálogo 2026</p>
+            <h1 class="section-title" style="font-size:clamp(2rem,5vw,4rem)">
+              Todas las prendas
+            </h1>
+            <p style="color:var(--clr-text-sub); margin-top:var(--sp-sm); font-size:var(--fs-sm)">
+              <span id="product-count">—</span> productos disponibles · Mínimo 6 piezas por diseño
+            </p>
+          </div>
+          <a href="https://wa.me/5218112345678?text=Hola%20SORN%2C%20quiero%20cotizar" target="_blank" rel="noopener"
+            class="btn btn--wa" style="gap:8px">
+            <i data-lucide="message-circle" style="width:18px;height:18px"></i> Cotizar ahora
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters + Sort -->
+    <div class="container" style="padding-bottom:var(--sp-2xl)">
+      <div class="flex-between" style="flex-wrap:wrap; gap:var(--sp-md);">
+        <div class="filters-bar" role="toolbar" aria-label="Filtros de producto">
+          <button class="filter-btn active" data-filter="Todos">Todos</button>
+          <button class="filter-btn" data-filter="DTF">DTF</button>
+          <button class="filter-btn" data-filter="Polo">Polo</button>
+          <button class="filter-btn" data-filter="Oversize">Oversize</button>
+          <button class="filter-btn" data-filter="Crop Top">Crop Top</button>
+          <button class="filter-btn" data-filter="Regular">Regular</button>
+        </div>
+        <select id="sort-select" class="sort-select" aria-label="Ordenar productos">
+          <option value="default">Relevancia</option>
+          <option value="precio-asc">Precio: Menor a Mayor</option>
+          <option value="precio-desc">Precio: Mayor a Menor</option>
+          <option value="nuevo">Más Nuevos</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <section class="container" style="padding-bottom:var(--sp-5xl)">
+      <div class="products-grid" id="products-grid" aria-label="Catálogo de productos">
+        <!-- Skeleton loading -->
+        <div class="skeleton" style="height:460px;border-radius:var(--radius-xl)"></div>
+        <div class="skeleton" style="height:460px;border-radius:var(--radius-xl)"></div>
+        <div class="skeleton" style="height:460px;border-radius:var(--radius-xl)"></div>
+      </div>
+    </section>
+
+    <!-- CTA strip -->
+    <div style="background:var(--clr-surface); border-top:1px solid var(--clr-border); padding:var(--sp-3xl) 0">
+      <div class="container text-center">
+        <p class="section-eyebrow" style="justify-content:center; margin-bottom:var(--sp-lg)">
+          ¿No encuentras lo que buscas?
+        </p>
+        <h2 style="font-size:var(--fs-2xl); font-weight:var(--fw-bold); margin-bottom:var(--sp-lg)">
+          Diseñamos desde cero para ti
+        </h2>
+        <a href="https://wa.me/5218112345678?text=Hola%20SORN%2C%20quiero%20un%20dise%C3%B1o%20personalizado"
+          target="_blank" rel="noopener" class="btn btn--wa btn--lg" style="gap:8px">
+          <i data-lucide="message-circle" style="width:20px;height:20px"></i> Diseño personalizado
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">SORN</div>
+          <p class="footer__brand-desc">Playeras personalizadas premium. Impresión en DTF y DTF Textil.</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            <a href="#" class="footer__social-link" aria-label="TikTok"><i data-lucide="music" style="width:20px;height:20px"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Navegación</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html" class="footer__link">Inicio</a></li>
+            <li><a href="catalogo.html" class="footer__link">Catálogo</a></li>
+            <li><a href="carrito.html" class="footer__link">Carrito</a></li>
+            <li><a href="contacto.html" class="footer__link">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Técnicas</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="catalogo.html?filter=DTF" class="footer__link">DTF Full Color</a></li>
+            <li><a href="catalogo.html?filter=Polo" class="footer__link">DTF Textil (Polos)</a></li>
+            <li><a href="catalogo.html?filter=Oversize" class="footer__link">Oversize Premium</a></li>
+            <li><a href="catalogo.html?filter=Crop Top" class="footer__link">Crop Top Dama</a></li>
+            <li><a href="catalogo.html?filter=Regular" class="footer__link">Corte Regular</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Contacto</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="https://wa.me/5218112345678" target="_blank" rel="noopener" class="footer__link"><i data-lucide="smartphone" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i>
+                WhatsApp</a></li>
+            <li><a href="mailto:hola@sorn.shop" class="footer__link"><i data-lucide="mail" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> hola@sorn.shop</a></li>
+            <li><span class="footer__link"><i data-lucide="map-pin" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> Monterrey, NL</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 <span>SORN.SHOP</span>. Todos los derechos reservados.</p>
+        <a href="https://wa.me/5218112345678" target="_blank" rel="noopener" class="footer__wa-btn" style="display:flex;align-items:center;gap:6px"><i data-lucide="message-circle" style="width:18px;height:18px"></i> WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="modal-overlay" class="modal-overlay" aria-hidden="true"></div>
+  <div id="product-modal" class="modal" role="dialog" aria-label="Detalle del producto" aria-modal="true" tabindex="-1">
+    <button class="modal__close" aria-label="Cerrar">✕</button>
+    <div id="modal-body"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js" type="module"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/carrito.js" type="module"></script>
+  <script src="js/catalogo.js" type="module"></script>
+  <script src="js/modal-producto.js"></script>
+  <script src="js/whatsapp.js" type="module"></script>
+
+  <script type="module">
+    // Update product count
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('data/productos.json');
+        const data = await res.json();
+        window._sornProducts = data.productos;
+        const countEl = document.getElementById('product-count');
+        if (countEl) countEl.textContent = data.productos.length;
+      } catch { }
+    });
+
+    // URL filter param
+    const params = new URLSearchParams(location.search);
+    const filterParam = params.get('filter');
+    if (filterParam) {
+      window.addEventListener('load', () => {
+        const btn = document.querySelector(`.filter-btn[data-filter="${filterParam}"]`);
+        btn?.click();
+      });
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+      const observer = new MutationObserver(() => {
+        observer.disconnect();
+        lucide.createIcons();
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+  </script>
+
+</body>
+
+</html>

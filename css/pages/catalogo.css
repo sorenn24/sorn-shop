@@ -1,0 +1,343 @@
+/* ============================================
+   SORN.SHOP — Catalog Page
+   ============================================ */
+
+.catalogo-header {
+  padding-top: 120px;
+  padding-bottom: var(--sp-2xl);
+  background: linear-gradient(180deg, var(--clr-surface) 0%, var(--clr-bg) 100%);
+}
+
+.catalogo-header__top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-xl);
+  flex-wrap: wrap;
+}
+
+/* Filters */
+.filters-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-2xl);
+}
+
+.filter-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-card);
+  color: var(--clr-text-sub);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.04em;
+  transition: all var(--dur-base) var(--ease-out);
+}
+
+.filter-btn:hover {
+  border-color: var(--clr-gold);
+  color: var(--clr-text);
+}
+
+.filter-btn.active {
+  background: var(--clr-gold);
+  border-color: var(--clr-gold);
+  color: var(--clr-bg);
+  font-weight: var(--fw-semi);
+}
+
+.sort-select {
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-card);
+  color: var(--clr-text);
+  font-size: var(--fs-sm);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9490' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 32px;
+  transition: border-color var(--dur-base);
+}
+
+.sort-select:focus { border-color: var(--clr-gold); }
+
+/* Product grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-lg);
+}
+
+.products-grid--4col { grid-template-columns: repeat(4, 1fr); }
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: var(--sp-5xl) 0;
+  grid-column: 1 / -1;
+}
+
+.empty-state__icon { font-size: 3rem; margin-bottom: var(--sp-lg); }
+.empty-state__title { font-size: var(--fs-xl); font-weight: var(--fw-semi); margin-bottom: var(--sp-sm); }
+.empty-state__text { color: var(--clr-text-sub); }
+
+/* ============================================
+   SORN.SHOP — Product Detail Page
+   ============================================ */
+
+.producto-header { padding-top: 100px; }
+
+.producto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4xl);
+  align-items: start;
+}
+
+.producto-gallery {
+  position: sticky;
+  top: 100px;
+}
+
+.producto-main-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-2xl);
+  background: var(--clr-surface);
+  margin-bottom: var(--sp-md);
+}
+
+.producto-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-sm);
+}
+
+.producto-thumb {
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--clr-border);
+  transition: border-color var(--dur-base);
+  background: var(--clr-surface);
+}
+
+.producto-thumb.active { border-color: var(--clr-gold); }
+.producto-thumb:hover { border-color: var(--clr-border-lg); }
+
+.producto-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xl);
+}
+
+.producto-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+}
+
+.producto-breadcrumb a:hover { color: var(--clr-text); }
+.producto-breadcrumb-sep { color: var(--clr-text-muted); }
+
+.producto-name {
+  font-size: clamp(var(--fs-2xl), 3vw, var(--fs-4xl));
+  font-weight: var(--fw-black);
+  letter-spacing: -0.02em;
+  line-height: var(--lh-tight);
+}
+
+.producto-price-block {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-md);
+}
+
+.producto-price {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-black);
+  color: var(--clr-gold);
+  letter-spacing: -0.03em;
+}
+
+.producto-price-note {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+}
+
+.producto-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--clr-border);
+}
+
+.producto-section-title {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--sp-md);
+}
+
+.producto-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.producto-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-sub);
+}
+
+.producto-feature::before {
+  content: '✓';
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--clr-gold-muted);
+  color: var(--clr-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   SORN.SHOP — Cart Page
+   ============================================ */
+
+.carrito-header { padding-top: 100px; padding-bottom: var(--sp-2xl); }
+
+.carrito-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--sp-2xl);
+  align-items: start;
+}
+
+.carrito-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.carrito-empty {
+  text-align: center;
+  padding: var(--sp-5xl) 0;
+}
+
+.carrito-empty__icon { font-size: 4rem; margin-bottom: var(--sp-lg); }
+.carrito-empty__title { font-size: var(--fs-2xl); font-weight: var(--fw-bold); margin-bottom: var(--sp-sm); }
+.carrito-empty__text { color: var(--clr-text-sub); margin-bottom: var(--sp-xl); }
+
+/* ============================================
+   SORN.SHOP — Contacto Page
+   ============================================ */
+
+.contacto-header { padding-top: 120px; padding-bottom: var(--sp-3xl); }
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4xl);
+  align-items: start;
+}
+
+.contacto-info { display: flex; flex-direction: column; gap: var(--sp-2xl); }
+
+.contacto-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-lg);
+  padding: var(--sp-xl);
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  transition: border-color var(--dur-base), transform var(--dur-slow) var(--ease-spring);
+}
+
+.contacto-item:hover {
+  border-color: rgba(201,168,76,0.3);
+  transform: translateY(-3px);
+}
+
+.contacto-item__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--clr-gold-muted);
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.contacto-item__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.contacto-item__value {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text);
+}
+
+.contacto-form-card {
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--sp-2xl);
+}
+
+.contacto-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-lg);
+}
+
+/* ── Responsive pages ── */
+@media (max-width: 1024px) {
+  .producto-grid { grid-template-columns: 1fr; gap: var(--sp-2xl); }
+  .producto-gallery { position: static; }
+  .carrito-layout { grid-template-columns: 1fr; }
+  .contacto-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-md); }
+  .producto-thumbs { grid-template-columns: repeat(4, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .products-grid { grid-template-columns: 1fr; }
+}

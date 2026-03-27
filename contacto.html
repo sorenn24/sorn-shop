@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Contacta a SORN.SHOP — Cotiza playeras personalizadas por WhatsApp, teléfono o correo.">
+  <title>Contacto — SORN.SHOP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages/catalogo.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <div class="toast-container" aria-live="polite"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+      <div class="container">
+        <div class="navbar__inner">
+          <a href="index.html" class="navbar__logo" aria-label="SORN.SHOP inicio">
+            <span class="navbar__logo-text">SORN</span>
+            <span class="navbar__logo-dot">.shop</span>
+          </a>
+          <ul class="navbar__nav" role="list">
+            <li><a href="index.html" class="navbar__link">Inicio</a></li>
+            <li><a href="catalogo.html" class="navbar__link">Catálogo</a></li>
+            <li><a href="contacto.html" class="navbar__link active">Contacto</a></li>
+          </ul>
+          <div class="navbar__actions">
+            <a href="carrito.html" class="navbar__cart-btn" aria-label="Carrito">
+              <i data-lucide="shopping-bag" style="width:20px;height:20px"></i> <span class="navbar__cart-count">0</span>
+            </a>
+            <a href="https://wa.me/5218112345678" target="_blank" rel="noopener"
+              class="navbar__cta btn btn--sm"><i data-lucide="message-circle" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> Cotizar</a>
+            <button class="navbar__burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="mobile-menu" aria-label="Menú móvil" aria-hidden="true">
+    <a href="index.html" class="mobile-menu__link">Inicio</a>
+    <a href="catalogo.html" class="mobile-menu__link">Catálogo</a>
+    <a href="carrito.html" class="mobile-menu__link">Carrito</a>
+    <a href="contacto.html" class="mobile-menu__link">Contacto</a>
+  </nav>
+
+  <main>
+
+    <!-- Header -->
+    <div class="contacto-header">
+      <div class="container text-center">
+        <p class="section-eyebrow" style="justify-content:center">Hablemos</p>
+        <h1 class="section-title reveal" style="font-size:clamp(2.5rem,6vw,5rem)">
+          Cotiza tu pedido<br>
+          <span
+            style="background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text">sin
+            complicaciones</span>
+        </h1>
+        <p
+          style="color:var(--clr-text-sub); margin-top:var(--sp-lg); font-size:var(--fs-md); max-width:480px; margin-left:auto; margin-right:auto; line-height:var(--lh-relaxed)">
+          Respuesta garantizada en menos de 2 horas en horario laboral. Mockup de tu diseño sin costo.
+        </p>
+      </div>
+    </div>
+
+    <!-- Main grid -->
+    <section class="container section--sm">
+      <div class="contacto-grid">
+
+        <!-- Info -->
+        <div class="contacto-info reveal-left">
+
+          <!-- WhatsApp - primary -->
+          <a href="https://wa.me/5218112345678?text=Hola%20SORN.SHOP%2C%20quiero%20cotizar%20playeras" target="_blank"
+            rel="noopener" class="contacto-item"
+            style="background:linear-gradient(135deg,rgba(37,211,102,0.08),rgba(37,211,102,0.03)); border-color:rgba(37,211,102,0.25);">
+            <div class="contacto-item__icon"
+              style="background:rgba(37,211,102,0.15); border-color:rgba(37,211,102,0.3); display:flex; align-items:center; justify-content:center">
+              <i data-lucide="message-circle" style="color:var(--clr-success); width:24px; height:24px"></i>
+            </div>
+            <div>
+              <p class="contacto-item__title">WhatsApp (principal)</p>
+              <p class="contacto-item__value">+52 (811) 234-5678</p>
+              <p style="font-size:var(--fs-xs); color:var(--clr-text-muted); margin-top:4px">
+                Respuesta en menos de 2 hrs · Lun–Vie 9am–7pm
+              </p>
+            </div>
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:hola@sorn.shop" class="contacto-item">
+            <div class="contacto-item__icon"><i data-lucide="mail"></i></div>
+            <div>
+              <p class="contacto-item__title">Correo electrónico</p>
+              <p class="contacto-item__value">hola@sorn.shop</p>
+              <p style="font-size:var(--fs-xs); color:var(--clr-text-muted); margin-top:4px">
+                Para cotizaciones formales y empresas
+              </p>
+            </div>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://instagram.com/sorn.shop" target="_blank" rel="noopener" class="contacto-item">
+            <div class="contacto-item__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
+            <div>
+              <p class="contacto-item__title">Instagram</p>
+              <p class="contacto-item__value">@sorn.shop</p>
+              <p style="font-size:var(--fs-xs); color:var(--clr-text-muted); margin-top:4px">
+                Mira nuestros últimos trabajos en stories
+              </p>
+            </div>
+          </a>
+
+          <!-- Location -->
+          <div class="contacto-item">
+            <div class="contacto-item__icon"><i data-lucide="map-pin"></i></div>
+            <div>
+              <p class="contacto-item__title">Ubicación</p>
+              <p class="contacto-item__value">Monterrey, Nuevo León</p>
+              <p style="font-size:var(--fs-xs); color:var(--clr-text-muted); margin-top:4px">
+                Envíos a todo México · Entrega local disponible
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ mini -->
+          <div
+            style="background:var(--clr-card); border:1px solid var(--clr-border); border-radius:var(--radius-xl); padding:var(--sp-xl)">
+            <h3
+              style="font-size:var(--fs-md); font-weight:var(--fw-semi); margin-bottom:var(--sp-lg); color:var(--clr-gold)">
+              Preguntas frecuentes
+            </h3>
+            <div style="display:flex; flex-direction:column; gap:var(--sp-md)">
+              <details style="border-bottom:1px solid var(--clr-border); padding-bottom:var(--sp-md)">
+                <summary
+                  style="cursor:pointer; font-size:var(--fs-sm); font-weight:var(--fw-medium); color:var(--clr-text)">
+                  ¿Cuál es el mínimo de piezas?
+                </summary>
+                <p
+                  style="font-size:var(--fs-sm); color:var(--clr-text-sub); margin-top:var(--sp-sm); line-height:var(--lh-relaxed)">
+                  El mínimo es de 6 piezas por diseño. Para sublimación y bordado, mínimo 12 piezas.
+                </p>
+              </details>
+              <details style="border-bottom:1px solid var(--clr-border); padding-bottom:var(--sp-md)">
+                <summary
+                  style="cursor:pointer; font-size:var(--fs-sm); font-weight:var(--fw-medium); color:var(--clr-text)">
+                  ¿Cuánto tarda mi pedido?
+                </summary>
+                <p
+                  style="font-size:var(--fs-sm); color:var(--clr-text-sub); margin-top:var(--sp-sm); line-height:var(--lh-relaxed)">
+                  7-10 días hábiles desde la aprobación del arte. Pedidos urgentes en 3-5 días con costo adicional.
+                </p>
+              </details>
+              <details style="border-bottom:1px solid var(--clr-border); padding-bottom:var(--sp-md)">
+                <summary
+                  style="cursor:pointer; font-size:var(--fs-sm); font-weight:var(--fw-medium); color:var(--clr-text)">
+                  ¿Me mandan un mockup antes de producir?
+                </summary>
+                <p
+                  style="font-size:var(--fs-sm); color:var(--clr-text-sub); margin-top:var(--sp-sm); line-height:var(--lh-relaxed)">
+                  Sí, siempre. Te enviamos el mockup digital para aprobación antes de iniciar la producción. Sin costo.
+                </p>
+              </details>
+              <details>
+                <summary
+                  style="cursor:pointer; font-size:var(--fs-sm); font-weight:var(--fw-medium); color:var(--clr-text)">
+                  ¿Qué formatos de diseño aceptan?
+                </summary>
+                <p
+                  style="font-size:var(--fs-sm); color:var(--clr-text-sub); margin-top:var(--sp-sm); line-height:var(--lh-relaxed)">
+                  AI, PDF, PNG en alta resolución (300 DPI mínimo). Si no tienes el archivo, nuestro equipo de diseño
+                  puede ayudarte.
+                </p>
+              </details>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contact form -->
+        <div class="reveal-right">
+          <div class="contacto-form-card">
+            <h2 style="font-size:var(--fs-xl); font-weight:var(--fw-bold); margin-bottom:var(--sp-xs)">
+              Envíanos un mensaje
+            </h2>
+            <p style="font-size:var(--fs-sm); color:var(--clr-text-sub); margin-bottom:var(--sp-xl)">
+              Completa el formulario y te contactamos de inmediato por WhatsApp.
+            </p>
+
+            <form class="contacto-form" id="contact-form" novalidate>
+
+              <div class="form-row">
+                <div class="input-group">
+                  <label class="input-label" for="contact-name">Nombre *</label>
+                  <input type="text" id="contact-name" class="input-field" placeholder="Tu nombre completo" required
+                    autocomplete="name">
+                </div>
+                <div class="input-group">
+                  <label class="input-label" for="contact-phone">WhatsApp / Teléfono *</label>
+                  <input type="tel" id="contact-phone" class="input-field" placeholder="+52 (81) ..." required
+                    autocomplete="tel">
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="contact-email">Correo electrónico</label>
+                <input type="email" id="contact-email" class="input-field" placeholder="tu@correo.com"
+                  autocomplete="email">
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="contact-type">Tipo de pedido</label>
+                <select id="contact-type" class="input-field sort-select" style="appearance:none; padding-right:32px">
+                  <option value="">Selecciona una opción</option>
+                  <option value="dtf">DTF Full Color</option>
+                  <option value="dtf_textil">DTF Textil para Polo</option>
+                  <option value="corporativo">Uniformes corporativos</option>
+                  <option value="otro">Otro / No sé</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="input-group">
+                  <label class="input-label" for="contact-qty">Cantidad estimada</label>
+                  <input type="number" id="contact-qty" class="input-field" placeholder="Ej: 50" min="6">
+                </div>
+                <div class="input-group">
+                  <label class="input-label" for="contact-date">¿Cuándo los necesitas?</label>
+                  <input type="date" id="contact-date" class="input-field">
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="contact-msg">Cuéntanos tu proyecto *</label>
+                <textarea id="contact-msg" class="notes-textarea" style="min-height:120px"
+                  placeholder="Describe tu diseño, colores, tallas, detalles importantes..." required></textarea>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="btn btn--wa btn--full btn--lg" id="form-submit-btn" style="gap:8px">
+                <i data-lucide="message-circle" style="width:20px;height:20px"></i> Enviar por WhatsApp
+              </button>
+
+              <p
+                style="font-size:var(--fs-xs); color:var(--clr-text-muted); text-align:center; margin-top:var(--sp-sm)">
+                Al enviar aceptas que nos contactemos contigo por WhatsApp.
+              </p>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Process steps -->
+    <section class="section--sm" style="background:var(--clr-surface); border-top:1px solid var(--clr-border)">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="section-eyebrow" style="justify-content:center">Proceso</p>
+          <h2 class="section-title reveal" style="font-size:var(--fs-3xl)">Así de fácil es pedir</h2>
+        </div>
+
+        <div class="grid grid-4 stagger-children" style="gap:var(--sp-xl)">
+          <div style="text-align:center; padding:var(--sp-xl)">
+            <div
+              style="width:60px; height:60px; border-radius:50%; background:var(--clr-gold-muted); border:1px solid rgba(201,168,76,0.3); display:flex; align-items:center; justify-content:center; color:var(--clr-gold); margin:0 auto var(--sp-lg)">
+              <i data-lucide="message-square" style="width:28px;height:28px"></i></div>
+            <h3 style="font-size:var(--fs-md); font-weight:var(--fw-semi); margin-bottom:var(--sp-sm)">Contáctanos</h3>
+            <p style="font-size:var(--fs-sm); color:var(--clr-text-sub); line-height:var(--lh-relaxed)">Mándanos tu idea
+              por WhatsApp o llena el formulario</p>
+          </div>
+          <div style="text-align:center; padding:var(--sp-xl)">
+            <div
+              style="width:60px; height:60px; border-radius:50%; background:var(--clr-gold-muted); border:1px solid rgba(201,168,76,0.3); display:flex; align-items:center; justify-content:center; color:var(--clr-gold); margin:0 auto var(--sp-lg)">
+              <i data-lucide="calculator" style="width:28px;height:28px"></i></div>
+            <h3 style="font-size:var(--fs-md); font-weight:var(--fw-semi); margin-bottom:var(--sp-sm)">Cotización</h3>
+            <p style="font-size:var(--fs-sm); color:var(--clr-text-sub); line-height:var(--lh-relaxed)">Te enviamos
+              precio, tiempos y opciones en menos de 2 horas</p>
+          </div>
+          <div style="text-align:center; padding:var(--sp-xl)">
+            <div
+              style="width:60px; height:60px; border-radius:50%; background:var(--clr-gold-muted); border:1px solid rgba(201,168,76,0.3); display:flex; align-items:center; justify-content:center; color:var(--clr-gold); margin:0 auto var(--sp-lg)">
+              <i data-lucide="check-circle" style="width:28px;height:28px"></i></div>
+            <h3 style="font-size:var(--fs-md); font-weight:var(--fw-semi); margin-bottom:var(--sp-sm)">Aprueba el arte
+            </h3>
+            <p style="font-size:var(--fs-sm); color:var(--clr-text-sub); line-height:var(--lh-relaxed)">Revisas el
+              mockup digital y das el visto bueno</p>
+          </div>
+          <div style="text-align:center; padding:var(--sp-xl)">
+            <div
+              style="width:60px; height:60px; border-radius:50%; background:var(--clr-gold-muted); border:1px solid rgba(201,168,76,0.3); display:flex; align-items:center; justify-content:center; color:var(--clr-gold); margin:0 auto var(--sp-lg)">
+              <i data-lucide="package" style="width:28px;height:28px"></i></div>
+            <h3 style="font-size:var(--fs-md); font-weight:var(--fw-semi); margin-bottom:var(--sp-sm)">¡Recibe tu
+              pedido!</h3>
+            <p style="font-size:var(--fs-sm); color:var(--clr-text-sub); line-height:var(--lh-relaxed)">7-10 días
+              hábiles y tus prendas llegan a tu puerta</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">SORN</div>
+          <p class="footer__brand-desc">Playeras personalizadas premium. Monterrey, NL.</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            <a href="#" class="footer__social-link" aria-label="TikTok"><i data-lucide="music" style="width:20px;height:20px"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Navegación</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html" class="footer__link">Inicio</a></li>
+            <li><a href="catalogo.html" class="footer__link">Catálogo</a></li>
+            <li><a href="carrito.html" class="footer__link">Carrito</a></li>
+            <li><a href="contacto.html" class="footer__link">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Técnicas</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="catalogo.html?filter=DTF" class="footer__link">DTF Full Color</a></li>
+            <li><a href="catalogo.html?filter=Polo" class="footer__link">DTF Textil (Polos)</a></li>
+            <li><a href="catalogo.html?filter=Oversize" class="footer__link">Oversize Premium</a></li>
+            <li><a href="catalogo.html?filter=Crop Top" class="footer__link">Crop Top Dama</a></li>
+            <li><a href="catalogo.html?filter=Regular" class="footer__link">Corte Regular</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Contacto</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="https://wa.me/5218112345678" target="_blank" rel="noopener" class="footer__link"><i data-lucide="smartphone" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i>
+                WhatsApp</a></li>
+            <li><a href="mailto:hola@sorn.shop" class="footer__link"><i data-lucide="mail" style="width:16px;height:16px;vertical-align:-3px;margin-right:4px"></i> hola@sorn.shop</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 <span>SORN.SHOP</span>. Todos los derechos reservados.</p>
+        <a href="https://wa.me/5218112345678" target="_blank" rel="noopener" class="footer__wa-btn" style="display:flex;align-items:center;gap:6px"><i data-lucide="message-circle" style="width:18px;height:18px"></i> WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" type="module"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/carrito.js" type="module"></script>
+  <script src="js/whatsapp.js" type="module"></script>
+
+  <script>
+    // Contact form → WhatsApp
+    document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('contact-name').value.trim();
+      const phone = document.getElementById('contact-phone').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const type = document.getElementById('contact-type').value;
+      const qty = document.getElementById('contact-qty').value;
+      const date = document.getElementById('contact-date').value;
+      const msg = document.getElementById('contact-msg').value.trim();
+
+      if (!name || !phone || !msg) {
+        window.SORN?.showToast?.('Por favor llena los campos obligatorios', 'error');
+        return;
+      }
+
+      const typeLabels = {
+        dtf: 'DTF Full Color',
+        dtf_textil: 'DTF Textil para Polo',
+        corporativo: 'Uniformes corporativos',
+        otro: 'Otro'
+      };
+
+      let waMsg = `👋 Hola *SORN.SHOP*, me contacto desde su sitio web.\n\n`;
+      waMsg += `*Nombre:* ${name}\n`;
+      if (email) waMsg += `*Email:* ${email}\n`;
+      waMsg += `*Teléfono:* ${phone}\n`;
+      if (type) waMsg += `*Tipo de pedido:* ${typeLabels[type] || type}\n`;
+      if (qty) waMsg += `*Cantidad estimada:* ${qty} piezas\n`;
+      if (date) waMsg += `*Fecha requerida:* ${date}\n`;
+      waMsg += `\n*Mensaje:*\n${msg}`;
+
+      const url = `https://wa.me/5218112345678?text=${encodeURIComponent(waMsg)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+
+      window.SORN?.showToast?.('¡Redirigiendo a WhatsApp!', 'success');
+    });
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+      const observer = new MutationObserver(() => {
+        observer.disconnect();
+        lucide.createIcons();
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+  </script>
+
+</body>
+
+</html>
