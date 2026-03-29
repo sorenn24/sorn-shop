@@ -8,7 +8,9 @@
 let currentProduct = null;
 let selectedTalla  = null;
 let selectedColor  = null;
+let selectedPrendaOption = null; // Corte o Material
 let quantity       = 1;
+let currentPrice   = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('modal-overlay');
@@ -53,7 +55,9 @@ async function openModal(productId) {
   currentProduct = product;
   selectedTalla  = null;
   selectedColor  = null;
+  selectedPrendaOption = null;
   quantity       = 1;
+  currentPrice   = product.precioBase;
 
   renderModal(product);
   overlay.classList.add('open');
@@ -71,6 +75,42 @@ function closeModal() {
   overlay?.classList.remove('open');
   modal?.classList.remove('open');
   document.body.style.overflow = '';
+}
+
+/* ── Calculate Price ── */
+function calculatePrice() {
+  if (!currentProduct) return 0;
+  
+  let basePrice = currentProduct.precioBase;
+  let isPlusSize = selectedTalla ? (selectedTalla.includes('2X') || selectedTalla.includes('3X') || selectedTalla.includes('XX')) : false;
+
+  if (currentProduct.tipoPrenda === 'polo') {
+    if (selectedPrendaOption === '100% Algodón') {
+      basePrice = 380;
+      if (isPlusSize) basePrice = 430;
+    } else if (selectedPrendaOption === 'Dryfit') {
+      basePrice = 490;
+      if (isPlusSize) basePrice = 550;
+    }
+  } else {
+    if (selectedPrendaOption === 'Oversize') {
+      basePrice = 350;
+      if (isPlusSize) basePrice = 380;
+    } else if (selectedPrendaOption === 'Regular' || selectedPrendaOption === 'Crop Top') {
+      basePrice = 280;
+      if (isPlusSize) basePrice = 320;
+    }
+  }
+  
+  return basePrice;
+}
+
+function updatePriceDisplay() {
+  currentPrice = calculatePrice();
+  const priceEl = document.getElementById('modal-dynamic-price');
+  if (priceEl) {
+    priceEl.innerHTML = `$${currentPrice.toLocaleString('es-MX')}`;
+  }
 }
 
 /* ── Render modal content ── */
@@ -106,6 +146,23 @@ function renderModal(p) {
     ></button>
   `).join('');
 
+  let prendaOptions = [];
+  let prendaOptionLabel = '';
+  if (p.tipoPrenda === 'polo') {
+    prendaOptionLabel = 'Material';
+    prendaOptions = ['100% Algodón', 'Dryfit'];
+  } else {
+    prendaOptionLabel = 'Corte';
+    prendaOptions = ['Regular', 'Crop Top', 'Oversize'];
+  }
+
+  const prendaOptionsHtml = prendaOptions.map(opt => `
+    <button class="prenda-option" data-option="${opt}">${opt}</button>
+  `).join('');
+
+  // Initial calculation just in case default isn't selected, show base price range if possible, or leave as is until selected.
+  currentPrice = calculatePrice();
+
   body.innerHTML = `
     <div class="modal__grid">
       <!-- Gallery -->
@@ -130,7 +187,7 @@ function renderModal(p) {
         <h2 class="modal__name">${p.nombre}</h2>
 
         <div class="modal__price">
-          $${p.precio.toLocaleString('es-MX')}
+          <span id="modal-dynamic-price">$${currentPrice.toLocaleString('es-MX')}</span>
           <span style="font-size:var(--fs-sm); color:var(--clr-text-muted); font-weight:400"> MXN / pieza</span>
         </div>
 
@@ -138,12 +195,13 @@ function renderModal(p) {
 
         <div class="divider"></div>
 
-        <!-- Material -->
+        <!-- Tipo de Prenda Option -->
         <div>
-          <p class="selector-label">Material</p>
-          <p style="font-size:var(--fs-sm); color:var(--clr-text-sub)">
-            ${p.material} &nbsp;·&nbsp; Técnica: ${p.tecnica}
+          <p class="selector-label">
+            ${prendaOptionLabel}
+            ${selectedPrendaOption ? `<span style="color:var(--clr-gold); margin-left:8px; text-transform:none; letter-spacing:0">${selectedPrendaOption}</span>` : ''}
           </p>
+          <div class="prenda-selector" id="prenda-selector">${prendaOptionsHtml}</div>
         </div>
 
         <!-- Tallas -->
@@ -190,7 +248,7 @@ function renderModal(p) {
           id="modal-add-btn"
           onclick="SORN_MODAL.addToCart()"
         >
-          🛒 Agregar al carrito
+          <i data-lucide="shopping-cart" style="width:20px;height:20px;vertical-align:-4px;margin-right:8px"></i> Agregar al carrito
         </button>
       </div>
     </div>
@@ -212,12 +270,39 @@ function renderModal(p) {
     });
   });
 
+  // Events: prenda option selection
+  body.querySelectorAll('.prenda-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      body.querySelectorAll('.prenda-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedPrendaOption = btn.dataset.option;
+      
+      const labelEl = btn.closest('div').previousElementSibling;
+      if (labelEl && labelEl.classList.contains('selector-label')) {
+        labelEl.innerHTML = `
+          ${p.tipoPrenda === 'polo' ? 'Material' : 'Corte'}
+          <span style="color:var(--clr-gold); margin-left:8px; text-transform:none; letter-spacing:0">${selectedPrendaOption}</span>
+        `;
+      }
+      updatePriceDisplay();
+    });
+  });
+
   // Events: size selection
   body.querySelectorAll('.size-option').forEach(btn => {
     btn.addEventListener('click', () => {
       body.querySelectorAll('.size-option').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       selectedTalla = btn.dataset.size;
+      
+      const labelEl = btn.closest('#size-selector').previousElementSibling;
+      if (labelEl && labelEl.classList.contains('selector-label')) {
+        labelEl.innerHTML = `
+          Talla
+          <span style="color:var(--clr-gold); margin-left:8px; text-transform:none; letter-spacing:0">${selectedTalla}</span>
+        `;
+      }
+      updatePriceDisplay();
     });
   });
 
@@ -227,6 +312,14 @@ function renderModal(p) {
       body.querySelectorAll('.color-option').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       selectedColor = btn.dataset.color;
+      
+      const labelEl = btn.closest('#color-selector').previousElementSibling;
+      if (labelEl && labelEl.classList.contains('selector-label')) {
+        labelEl.innerHTML = `
+          Color
+          <span style="color:var(--clr-gold); margin-left:8px; text-transform:none; letter-spacing:0">${selectedColor}</span>
+        `;
+      }
     });
   });
 
@@ -248,13 +341,23 @@ function renderModal(p) {
 
 /* ── Add to cart from modal ── */
 function addToCartFromModal() {
+  const prendaLabel = currentProduct.tipoPrenda === 'polo' ? 'Material' : 'Corte';
+  if (!selectedPrendaOption) {
+    window.SORN?.showToast?.(`Selecciona un ${prendaLabel}`, 'error');
+    document.getElementById('prenda-selector')?.classList.add('shake');
+    setTimeout(() => document.getElementById('prenda-selector')?.classList.remove('shake'), 500);
+    return;
+  }
   if (!selectedTalla) {
     window.SORN?.showToast?.('Selecciona una talla', 'error');
     document.getElementById('size-selector')?.classList.add('shake');
+    setTimeout(() => document.getElementById('size-selector')?.classList.remove('shake'), 500);
     return;
   }
   if (!selectedColor) {
     window.SORN?.showToast?.('Selecciona un color', 'error');
+    document.getElementById('color-selector')?.classList.add('shake');
+    setTimeout(() => document.getElementById('color-selector')?.classList.remove('shake'), 500);
     return;
   }
 
@@ -264,9 +367,11 @@ function addToCartFromModal() {
   window.SORN_CART?.add({
     id:          currentProduct.id,
     nombre:      currentProduct.nombre,
-    precio:      currentProduct.precio,
+    precio:      currentPrice,
     talla:       selectedTalla,
     color:       selectedColor,
+    opcionPrenda: selectedPrendaOption,
+    tipoPrenda:  currentProduct.tipoPrenda,
     cantidad:    qty,
     notas:       notas,
     imagen:      currentProduct.imagenPrincipal
@@ -280,7 +385,7 @@ function addToCartFromModal() {
     btn.textContent = '✓ Agregado';
     btn.style.background = 'var(--clr-success)';
     setTimeout(() => {
-      btn.innerHTML = '🛒 Agregar al carrito';
+      btn.innerHTML = '<i data-lucide="shopping-cart" style="width:20px;height:20px;vertical-align:-4px;margin-right:8px"></i> Agregar al carrito';
       btn.style.background = '';
     }, 2000);
   }

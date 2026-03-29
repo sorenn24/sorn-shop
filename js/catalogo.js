@@ -154,13 +154,13 @@ export function createProductCard(p, idx = 0) {
             title="Vista rápida"
             onclick="SORN_MODAL.open('${p.id}')"
             aria-label="Vista rápida de ${p.nombre}"
-          >👁</button>
+          ><i data-lucide="eye" style="width:20px;height:20px;pointer-events:none;"></i></button>
           <button
             class="product-card__action-btn"
             title="Agregar al carrito"
             onclick="SORN_MODAL.open('${p.id}')"
             aria-label="Agregar ${p.nombre} al carrito"
-          >🛒</button>
+          ><i data-lucide="shopping-cart" style="width:20px;height:20px;pointer-events:none;"></i></button>
         </div>
       </div>
       <div class="product-card__body">

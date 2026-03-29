@@ -22,17 +22,18 @@ export function saveCart(cart) {
 
 export function addToCart(item) {
   const cart = getCart();
-  // Check if same product + talla + color already exists
+  // Check if same product + talla + color + opcionPrenda already exists
   const idx = cart.findIndex(c =>
     c.id === item.id &&
     c.talla === item.talla &&
-    c.color === item.color
+    c.color === item.color &&
+    c.opcionPrenda === item.opcionPrenda
   );
 
   if (idx !== -1) {
     cart[idx].cantidad += item.cantidad;
   } else {
-    cart.push({ ...item, cartId: `${item.id}-${item.talla}-${item.color}-${Date.now()}` });
+    cart.push({ ...item, cartId: `${item.id}-${item.talla}-${item.color}-${item.opcionPrenda}-${Date.now()}` });
   }
   saveCart(cart);
   return cart;
@@ -108,6 +109,7 @@ function renderCart() {
       <div class="cart-item__info">
         <div class="cart-item__name">${item.nombre}</div>
         <div class="cart-item__meta">
+          ${item.tipoPrenda === 'polo' ? 'Material' : 'Corte'}: <strong>${item.opcionPrenda}</strong> &nbsp;·&nbsp;
           Talla: <strong>${item.talla}</strong> &nbsp;·&nbsp;
           Color: <strong>${item.color}</strong>
           ${item.notas ? `<br>Nota: <em>${item.notas}</em>` : ''}
@@ -139,6 +141,15 @@ function renderCart() {
 
   // Update summary
   updateSummary(cart);
+
+  // Stock note
+  if (!document.getElementById('cart-stock-note')) {
+    const note = document.createElement('div');
+    note.id = 'cart-stock-note';
+    note.style.cssText = 'font-size: var(--fs-sm); color: var(--clr-text-sub); margin-top: var(--sp-md); text-align: right; font-style: italic;';
+    note.textContent = '* Sujeto a confirmación de stock y colores por WhatsApp.';
+    container.parentNode.insertBefore(note, container.nextSibling);
+  }
 }
 
 function updateSummary(cart) {
@@ -166,6 +177,7 @@ export function buildWhatsAppMessage() {
   cart.forEach((item, i) => {
     msg += `*${i + 1}. ${item.nombre}*\n`;
     msg += `   • Cantidad: ${item.cantidad} pz\n`;
+    msg += `   • ${item.tipoPrenda === 'polo' ? 'Material' : 'Corte'}: ${item.opcionPrenda}\n`;
     msg += `   • Talla: ${item.talla}\n`;
     msg += `   • Color: ${item.color}\n`;
     msg += `   • Precio unitario: $${item.precio.toLocaleString('es-MX')}\n`;
