@@ -5,7 +5,7 @@
 
 'use strict';
 
-const WA_NUMBER = '5218112345678'; // Número de WhatsApp de SORN.SHOP
+const WA_NUMBER = '528120122734'; // Número de WhatsApp de SORN.SHOP
 
 document.addEventListener('DOMContentLoaded', () => {
   // Carrito: botón "Cotizar por WhatsApp"

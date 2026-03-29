@@ -104,7 +104,7 @@ function renderCart() {
         src="${item.imagen || 'assets/img/productos/placeholder.jpg'}"
         alt="${item.nombre}"
         loading="lazy"
-        onerror="this.src='https://picsum.photos/seed/${item.id}/200/200'"
+        onerror="this.src=window.SORN_PLACEHOLDER||this.src"
       >
       <div class="cart-item__info">
         <div class="cart-item__name">${item.nombre}</div>
@@ -112,6 +112,7 @@ function renderCart() {
           ${item.tipoPrenda === 'polo' ? 'Material' : 'Corte'}: <strong>${item.opcionPrenda}</strong> &nbsp;·&nbsp;
           Talla: <strong>${item.talla}</strong> &nbsp;·&nbsp;
           Color: <strong>${item.color}</strong>
+          ${item.disenoNum ? ` &nbsp;·&nbsp; Diseño: <strong>#${item.disenoNum}</strong>` : ''}
           ${item.notas ? `<br>Nota: <em>${item.notas}</em>` : ''}
         </div>
         <div class="cart-item__actions">
@@ -176,6 +177,7 @@ export function buildWhatsAppMessage() {
 
   cart.forEach((item, i) => {
     msg += `*${i + 1}. ${item.nombre}*\n`;
+    if (item.disenoNum) msg += `   • Diseño: *#${item.disenoNum}*\n`;
     msg += `   • Cantidad: ${item.cantidad} pz\n`;
     msg += `   • ${item.tipoPrenda === 'polo' ? 'Material' : 'Corte'}: ${item.opcionPrenda}\n`;
     msg += `   • Talla: ${item.talla}\n`;

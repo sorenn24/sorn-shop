@@ -5,12 +5,13 @@
 
 'use strict';
 
-let currentProduct = null;
-let selectedTalla  = null;
-let selectedColor  = null;
+let currentProduct     = null;
+let selectedTalla      = null;
+let selectedColor      = null;
 let selectedPrendaOption = null; // Corte o Material
-let quantity       = 1;
-let currentPrice   = 0;
+let quantity           = 1;
+let currentPrice       = 0;
+let currentImageIndex  = 0; // Tracks which design photo is active
 
 document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('modal-overlay');
@@ -46,18 +47,20 @@ async function openModal(productId) {
       const data = await res.json();
       products = data.productos;
       window._sornProducts = products;
+      window._sornVideosCorte = data.videosCorte || {};
     } catch { return; }
   }
 
   const product = products.find(p => p.id === productId);
   if (!product) return;
 
-  currentProduct = product;
-  selectedTalla  = null;
-  selectedColor  = null;
+  currentProduct     = product;
+  selectedTalla      = null;
+  selectedColor      = null;
   selectedPrendaOption = null;
-  quantity       = 1;
-  currentPrice   = product.precioBase;
+  quantity           = 1;
+  currentPrice       = product.precioBase;
+  currentImageIndex  = 0;
 
   renderModal(product);
   overlay.classList.add('open');
@@ -118,8 +121,8 @@ function renderModal(p) {
   const body = document.getElementById('modal-body');
   if (!body) return;
 
-  const mainImg = p.imagenPrincipal || `https://picsum.photos/seed/${p.id}/600/600`;
-  const imgs    = p.imagenes?.length ? p.imagenes : [mainImg];
+  const mainImg = p.imagenPrincipal || window.SORN_PLACEHOLDER;
+  const imgs    = p.imagenes?.filter(img => img).length ? p.imagenes : [mainImg];
 
   const thumbsHtml = imgs.map((img, i) => `
     <div class="modal__thumb ${i === 0 ? 'active' : ''}" data-idx="${i}">
@@ -127,7 +130,7 @@ function renderModal(p) {
         src="${img}"
         alt="${p.nombre} ${i + 1}"
         loading="lazy"
-        onerror="this.src='https://picsum.photos/seed/${p.id}${i}/300/300'"
+        onerror="this.src=SORN_PLACEHOLDER"
       >
     </div>
   `).join('');
@@ -172,7 +175,7 @@ function renderModal(p) {
           id="modal-main-img"
           src="${mainImg}"
           alt="${p.nombre}"
-          onerror="this.src='https://picsum.photos/seed/${p.id}/600/600'"
+          onerror="this.src=SORN_PLACEHOLDER"
         >
         <div class="modal__thumbs">${thumbsHtml}</div>
       </div>
@@ -202,6 +205,25 @@ function renderModal(p) {
             ${selectedPrendaOption ? `<span style="color:var(--clr-gold); margin-left:8px; text-transform:none; letter-spacing:0">${selectedPrendaOption}</span>` : ''}
           </p>
           <div class="prenda-selector" id="prenda-selector">${prendaOptionsHtml}</div>
+        </div>
+
+        <!-- Video del corte -->
+        <div id="corte-video-wrap" style="display:none; margin-top:var(--sp-md)">
+          <p class="selector-label" style="margin-bottom:var(--sp-sm)">
+            <i data-lucide="play-circle" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"></i>
+            Así queda este corte
+          </p>
+          <video
+            id="corte-video"
+            style="width:100%; border-radius:var(--radius-lg); border:1px solid var(--clr-border); max-height:220px; object-fit:cover; background:#000"
+            autoplay
+            muted
+            loop
+            playsinline
+            controls
+          >
+            <source id="corte-video-src" src="" type="video/mp4">
+          </video>
         </div>
 
         <!-- Tallas -->
@@ -259,6 +281,7 @@ function renderModal(p) {
     thumb.addEventListener('click', () => {
       body.querySelectorAll('.modal__thumb').forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
+      currentImageIndex = i; // Track active design #
       const mainImgEl = document.getElementById('modal-main-img');
       if (mainImgEl) {
         mainImgEl.style.opacity = '0';
@@ -284,6 +307,23 @@ function renderModal(p) {
           <span style="color:var(--clr-gold); margin-left:8px; text-transform:none; letter-spacing:0">${selectedPrendaOption}</span>
         `;
       }
+
+      // Show video for selected cut
+      const videoWrap = document.getElementById('corte-video-wrap');
+      const videoEl   = document.getElementById('corte-video');
+      const videoSrc  = document.getElementById('corte-video-src');
+      const videos    = window._sornVideosCorte || {};
+      const videoUrl  = videos[selectedPrendaOption];
+
+      if (videoWrap && videoEl && videoSrc && videoUrl) {
+        videoSrc.src = videoUrl;
+        videoEl.load();
+        videoWrap.style.display = 'block';
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      } else if (videoWrap) {
+        videoWrap.style.display = 'none';
+      }
+
       updatePriceDisplay();
     });
   });
@@ -361,20 +401,24 @@ function addToCartFromModal() {
     return;
   }
 
-  const notas = document.getElementById('modal-notes')?.value || '';
-  const qty   = parseInt(document.getElementById('qty-input')?.value || '1');
+  const notas      = document.getElementById('modal-notes')?.value || '';
+  const qty        = parseInt(document.getElementById('qty-input')?.value || '1');
+  const disenoNum  = currentImageIndex + 1; // Human-readable design number
+  const imgs       = currentProduct.imagenes?.filter(Boolean) || [];
+  const imagenActiva = imgs[currentImageIndex] || currentProduct.imagenPrincipal;
 
   window.SORN_CART?.add({
-    id:          currentProduct.id,
-    nombre:      currentProduct.nombre,
-    precio:      currentPrice,
-    talla:       selectedTalla,
-    color:       selectedColor,
+    id:           currentProduct.id,
+    nombre:       currentProduct.nombre,
+    precio:       currentPrice,
+    talla:        selectedTalla,
+    color:        selectedColor,
     opcionPrenda: selectedPrendaOption,
-    tipoPrenda:  currentProduct.tipoPrenda,
-    cantidad:    qty,
-    notas:       notas,
-    imagen:      currentProduct.imagenPrincipal
+    tipoPrenda:   currentProduct.tipoPrenda,
+    cantidad:     qty,
+    notas:        notas,
+    disenoNum:    disenoNum,
+    imagen:       imagenActiva
   });
 
   window.SORN?.showToast?.(`✓ ${currentProduct.nombre} agregado al carrito`, 'success');
