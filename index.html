@@ -507,7 +507,7 @@
 
   <!-- Featured products loader -->
   <script type="module">
-    import { createProductCard } from './js/catalogo.js';
+    import { createProductCard, initCardCarousel } from './js/catalogo.js';
 
     async function loadFeatured() {
       const grid = document.getElementById('featured-grid');
@@ -518,16 +518,24 @@
         const data = await res.json();
         window._sornProducts = data.productos;
 
+        // Show 4 featured products (one per category)
         const featured = data.productos
           .filter(p => p.destacado)
           .slice(0, 4);
 
         grid.innerHTML = featured.map((p, i) => createProductCard(p, i)).join('');
 
-        // Trigger reveal
+        // Init carousel AFTER cards are in the DOM
+        initCardCarousel(grid);
+
+        // Trigger reveal + image fade-in
         requestAnimationFrame(() => {
           grid.querySelectorAll('.product-card').forEach((card, i) => {
             setTimeout(() => card.classList.add('visible'), i * 80);
+          });
+          grid.querySelectorAll('img').forEach(img => {
+            if (img.complete) img.classList.add('img-loaded');
+            else img.addEventListener('load', () => img.classList.add('img-loaded'));
           });
         });
 

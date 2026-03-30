@@ -341,3 +341,86 @@
 @media (max-width: 480px) {
   .products-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Card Carousel: arrows ── */
+.card-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(12,12,12,0.72);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out),
+              background var(--dur-fast),
+              transform var(--dur-fast);
+  pointer-events: none;
+}
+
+.product-card:hover .card-arrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.card-arrow--prev { left: var(--sp-sm); }
+.card-arrow--next { right: var(--sp-sm); }
+
+.card-arrow:hover {
+  background: var(--clr-gold);
+  border-color: var(--clr-gold);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.card-arrow svg { display: block; flex-shrink: 0; }
+
+/* ── Card Carousel: dots ── */
+.card-dots {
+  position: absolute;
+  bottom: var(--sp-sm);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 3;
+}
+
+.card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  transition: background var(--dur-base), transform var(--dur-base);
+}
+
+.card-dot.active {
+  background: var(--clr-gold);
+  transform: scale(1.25);
+}
+
+/* ── Card image count badge ── */
+.card-count-badge {
+  position: absolute;
+  top: var(--sp-md);
+  right: var(--sp-md);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(12,12,12,0.72);
+  backdrop-filter: blur(6px);
+  font-size: 10px;
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.9);
+  z-index: 2;
+}
+
+/* ── Image fade-in ── */
+.img-fade { opacity: 0; transition: opacity 0.35s var(--ease-out); }
+.img-fade.img-loaded { opacity: 1; }

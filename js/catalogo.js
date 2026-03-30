@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   initFilters();
   initSort();
   renderProducts(allProducts);
-  initCardCarousel();
+  const grid = document.getElementById('products-grid');
+  initCardCarousel(grid);
 });
 
 /* ── Load from JSON ── */
@@ -85,7 +86,8 @@ function applyFiltersAndSort() {
     default:            filtered.sort((a,b) => (b.destacado?1:0) - (a.destacado?1:0));
   }
   renderProducts(filtered);
-  initCardCarousel();
+  const grid = document.getElementById('products-grid');
+  initCardCarousel(grid);
 }
 
 /* ── Render cards ── */
@@ -215,8 +217,10 @@ export function createProductCard(p, idx = 0) {
 }
 
 /* ── Card Carousel (event delegation) ── */
-function initCardCarousel() {
-  const grid = document.getElementById('products-grid') ||
+export function initCardCarousel(gridEl) {
+  // Accept a grid element directly, or find by known IDs
+  const grid = gridEl ||
+               document.getElementById('products-grid') ||
                document.getElementById('featured-grid');
   if (!grid || grid._carouselBound) return;
   grid._carouselBound = true;
