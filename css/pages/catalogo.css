@@ -421,6 +421,16 @@
   z-index: 2;
 }
 
-/* ── Image fade-in ── */
-.img-fade { opacity: 0; transition: opacity 0.35s var(--ease-out); }
-.img-fade.img-loaded { opacity: 1; }
+/* ── Image fade-in (initial load) ── */
+.img-fade {
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+.img-fade.img-loaded {
+  opacity: 1;
+}
+/* Smooth crossfade when switching carousel images */
+.img-fade.img-switching {
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-out);
+}

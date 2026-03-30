@@ -239,15 +239,33 @@ export function initCardCarousel(gridEl) {
     idx = isNext ? (idx + 1) % imgs.length : (idx - 1 + imgs.length) % imgs.length;
     _cardIdx[id] = idx;
 
-    // Update image with fade
+    // Smooth crossfade
     const imgEl = document.getElementById(`card-img-${id}`);
     if (imgEl) {
+      // Fade OUT
+      imgEl.classList.add('img-switching');
       imgEl.classList.remove('img-loaded');
+
       setTimeout(() => {
+        // Swap src while invisible
         imgEl.src = imgs[idx];
-        imgEl.onload = () => imgEl.classList.add('img-loaded');
-        imgEl.onerror = () => { imgEl.src = PLACEHOLDER; imgEl.classList.add('img-loaded'); };
-      }, 150);
+        const finish = () => {
+          imgEl.classList.remove('img-switching');
+          imgEl.classList.add('img-loaded');
+          imgEl.removeEventListener('load', finish);
+          imgEl.removeEventListener('error', onErr);
+        };
+        const onErr = () => {
+          imgEl.src = PLACEHOLDER;
+          finish();
+        };
+        if (imgEl.complete && imgEl.naturalWidth) {
+          finish();
+        } else {
+          imgEl.addEventListener('load', finish);
+          imgEl.addEventListener('error', onErr);
+        }
+      }, 200); // matches img-switching transition duration
     }
 
     // Update dots
